@@ -4,27 +4,34 @@
 
   angular.module('CustomApp',[])
   .controller('CustomCheckController',CustomCheckController)
-  .filter('custom',CustomFilterFactory);
+  //.filter('custom',CustomFilter);,'customFilter',customFilter
 
-  CustomCheckController.$inject=['$scope','customFilter']
+  CustomCheckController.$inject=['$scope']
 
-  function CustomCheckController($scope,customFilter)
+  function CustomCheckController($scope)
   {
     $scope.sayMessage = function ()
     {
-      var input="This is my First Filter Creation";
-      return input;
-    }
-    $scope.customFilterMessage = function ()
+      var msg="This is my First Filter Creation";
+      return msg;
+    };
+    /*$scope.customFilterMessage = function ()
     {
       var input="This is my First Filter Creation";
       input = customFilter(input);
       return input;
-    }
+    };
     $scope.dispalyMessage = function()
     {
     return "Hello";
-    }
+  };*/
 
-  };
+  }
+/*  function CustomFilter(){
+    return function(msg){
+      msg= msg || "";
+      msg=msg.replace("First","Last");
+      return msg;
+    };
+  }*/
 })();

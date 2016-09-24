@@ -1,16 +1,17 @@
 <!DOCTYPE html>
-<html ng-app='CustomApp'>
+<html>
   <head>
     <meta charset="utf-8">
     <script src="app.js"></script>
     <script src="angular.min.js"></script>
     <title>Module2</title>
   </head>
-  <body>
+  <body ng-app='CustomApp'>
     <h1>Custom Filters</h1>
 
     <div ng-controller='CustomCheckController'>
-      {{sayMessage}}
+      {{sayMessage()}}<br>
+      {{customFilterMessage()}}
     <div>
     <button ng-click="displayMessage()">Click On it</button>
   </div>
