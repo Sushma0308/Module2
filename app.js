@@ -2,36 +2,46 @@
 {
   'use strict';
 
-  angular.module('CustomApp',[])
-  .controller('CustomCheckController',CustomCheckController)
-  //.filter('custom',CustomFilter);,'customFilter',customFilter
+  angular.module('MsgApp',[])
+  .controller('MsgController',MsgController)
+.filter('loves',LovesFilter)
+.filter('truth',TruthFilter);
+  MsgController.$inject=['$scope','lovesFilter']
 
-  CustomCheckController.$inject=['$scope']
-
-  function CustomCheckController($scope)
+  function MsgController($scope,lovesFilter)
   {
+    $scope.stateOfBeing = "hungry";
     $scope.sayMessage = function ()
     {
       var msg="This is my First Filter Creation";
       return msg;
     };
-    /*$scope.customFilterMessage = function ()
+    $scope.sayLovesMessage = function ()
     {
-      var input="This is my First Filter Creation";
-      input = customFilter(input);
-      return input;
-    };
-    $scope.dispalyMessage = function()
-    {
-    return "Hello";
-  };*/
-
-  }
-/*  function CustomFilter(){
-    return function(msg){
-      msg= msg || "";
-      msg=msg.replace("First","Last");
+      var msg="This is my First Filter Creation";
+      msg = lovesFilter(msg);
       return msg;
     };
-  }*/
+    $scope.displayMessage = function()
+    {
+    $scope.stateOfBeing="fed";
+  };
+
+}
+  function LovesFilter(){
+    return function(input){
+      input= input || "";
+      input=input.replace("First","Last");
+      return input;
+    };
+  }
+
+  function TruthFilter(){
+
+    return function(input,target,replace){
+      input= input || "";
+      input=input.replace(target,replace);
+      return input;
+    }
+};
 })();

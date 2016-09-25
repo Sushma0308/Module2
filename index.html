@@ -1,17 +1,20 @@
 <!DOCTYPE html>
-<html>
+<html ng-app = "MsgApp">
   <head>
     <meta charset="utf-8">
-    <script src="app.js"></script>
+      <title>Module2</title>
     <script src="angular.min.js"></script>
-    <title>Module2</title>
-  </head>
-  <body ng-app='CustomApp'>
-    <h1>Custom Filters</h1>
+    <script src="app.js"></script>
 
-    <div ng-controller='CustomCheckController'>
-      {{sayMessage()}}<br>
-      {{customFilterMessage()}}
+  </head>
+  <body>
+    <h1>Custom Filters</h1>
+    <div ng-controller = "MsgController" >
+      {{ sayMessage() }}<br>
+      {{sayLovesMessage()}}<br>
+      Truth:{{sayLovesMessage() | truth :'healthy' :'cookie'}}<br>
+      Truth:{{sayLovesMessage() | truth :'healthy' :'cookie' | uppercase}}
+
     <div>
     <button ng-click="displayMessage()">Click On it</button>
   </div>
